@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { APIResponse, Game } from 'src/app/models';
 import { HttpService } from 'src/app/service/http.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -39,6 +40,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
+  openGameDetails(id: any): void {
+    console.log(id)
+    this.router.navigate(['details', id]);
+  }
+
   ngOnDestroy(): void {
     if (this.gameSub) {
       this.gameSub.unsubscribe();
@@ -48,6 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.routeSub.unsubscribe();
     }
   }
-
+  test(){
+    console.log("hello test")
+  }
 }
 
